@@ -1,3 +1,5 @@
+#22.03.2021 Added var_names fucntionality to the bind_exercises function. (Alex)
+
 from learntools.core.multiproblem import MultipartProblem
 
 def backtickify(s):
@@ -29,7 +31,7 @@ def instantiate_probview(prob_cls, value_per_problem):
     return view
 
 
-def bind_exercises(g, exercises, start=1, var_format='q{n}'):
+def bind_exercises(g, exercises, start=1, var_format='q{n}', var_names = None):
     """Given the globals() dict of an exercise module, and an ordered list of
     Problem subclasses, create a sequence of variables (by default q1, q2, q3...
     but customizable via the start and var_format kwargs) referring to instantiations
@@ -55,7 +57,13 @@ def bind_exercises(g, exercises, start=1, var_format='q{n}'):
         if prob_cls is None:
             continue
         qno = i + start
-        varname = var_format.format(n=qno)
+        if var_names is not None and len(var_names) == len(exercises):
+            varname = var_names[i]
+        elif var_names is not None and len(var_names) != len(exercises):
+            raise Warning('Variable names are not provided for all exercises. Uniform formatiing of variable names is applied instead')
+            varname = var_format.format(n=qno)
+        else:
+            varname = var_format.format(n=qno)
         assert varname not in g
         # TODO: Probably cleaner to just pass these as sublists, rather than having
         # the MultipartProblem class start in some nascent state and get 'activated' here
