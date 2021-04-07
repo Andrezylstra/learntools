@@ -1,5 +1,7 @@
 from learntools.core import *
 from learntools.core import tracking 
+import numpy as np
+import matplotlib.pyplot as plt
 
 def get_last_printed_string(i = -1):
     #In is a global variable with inputs.
