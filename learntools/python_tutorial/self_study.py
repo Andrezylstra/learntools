@@ -3,8 +3,10 @@ from learntools.core import tracking
 import numpy as np
 import matplotlib.pyplot as plt
 
-def get_last_printed_string(In, i = -1):
+def get_last_printed_string(i = -1):
+
     #In is a global variable with inputs.
+    global In
     i = i - 1
     output = In[i]
     for line in reversed(output.split('\n')):
@@ -80,7 +82,7 @@ class CodonDict(EqualityCheckProblem):
                                                    .format(len(correct_dict), len(codon_dict)))
         assert len(shared_items) == len(correct_dict), ("Your dictionary has {} elements but only {} correct elements. Check the spelling."
                                                         .format(len(codon_dict), len(shared_items)))
-        assert any([are_strings_the_same(correct_string, get_last_printed_string(In)) for 
+        assert any([are_strings_the_same(correct_string, get_last_printed_string()) for 
                     correct_string in correct_strings]), ("`codon_dict` is defined correctly but the final sentence is not correct, perhaps you have a typo?")
 
 
