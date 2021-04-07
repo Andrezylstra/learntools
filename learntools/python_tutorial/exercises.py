@@ -33,8 +33,8 @@ class JanJanssen(EqualityCheckProblem):
                                       .format(correct_name, name))
         assert age == correct_age, ("The variable `age` should contain the integer `{}`. You have `{}`."
                                       .format(correct_age, age))
-        assert are_strings_the_same(correct_string, get_last_printed_string()) == 1, ('Variables `name` and `age` are defined correctly but the final sentence is not correct, perhaps you have a typo?')
-   
+        assert are_strings_the_same(correct_string, get_last_printed_string()) == 1, ('Variables `name` and `age` are defined correctly but the final sentence is not correct, perhaps you have a typo?'
+   )
     
 class CreateEvenList(EqualityCheckProblem):
     _vars = ['even', 'length_even']
@@ -103,7 +103,7 @@ class CreateArray(EqualityCheckProblem):
         correct_array = np.array([4,5,9,11,7])
         assert isinstance(a, np.ndarray), ("You should create a `np.array`, not `{}`").format(type(a),)   
         assert len(a) == len(correct_array), ('Your array `a` should have {} elements.'.format(len(correct_array)))
-        assert a == correct_array, ('Did you put the numbers in the arrary in the correct order?')
+        assert (a == correct_array).all(), ('Did you put the numbers in the arrary in the correct order?')
         
 class OperateWithArray(EqualityCheckProblem):
     import numpy as np
@@ -113,9 +113,9 @@ class OperateWithArray(EqualityCheckProblem):
 
     def check(self, a_mult, a_div, a_power):
         correct_array = np.array([4,5,9,11,7])
-        assert a_mult == correct_array*2, ("You didn't mulptiply the array correctly")   
-        assert a_div == correct_array*6, ("You didn't divide the array correctly")   
-        assert a_power == correct_array**2, ("You didn't exponentiated the array correctly")   
+        assert (a_mult == correct_array*2).all(), ("You didn't mulptiply the array correctly")   
+        assert (a_div == correct_array/6).all(), ("You didn't divide the array correctly")   
+        assert (a_power == correct_array**2).all(), ("You didn't exponentiated the array correctly")   
         
 class MichaelisMenten(FunctionProblem):
     _var = 'Michaelis_Menten'
@@ -167,5 +167,19 @@ class PlotThreeLines(EqualityCheckProblem):
            )
 
 
-
-     
+qvars = bind_exercises(globals(), [
+    JanJanssen,
+    CreateEvenList,
+    ShoppingPriceLists,
+    AppendElementToList,
+    EnzymesDict,
+    CreateArray,
+    OperateWithArray,
+    MichaelisMenten,
+    PlotThreeLines
+    ],
+    var_format='ex_{n}',
+    var_names = ['ex_1a', 'ex_2a', 'ex_2b', 'ex_2c',
+                 'ex_3','ex_4a', 'ex_4b', 'ex_5a', 'ex_6d']
+    )
+__all__ = list(qvars)
