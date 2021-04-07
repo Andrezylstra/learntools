@@ -25,9 +25,10 @@ def are_strings_the_same(string1, string2):
         return False
     
 def get_print_output_colab(input_,  **kwargs):
+  print(kwargs)
   from google.colab import _message
   nb = _message.blocking_request('get_ipynb')
-
+  
   for cell in nb['ipynb']['cells']:
     if cell['cell_type'] == 'code':
       # print('Codon
@@ -95,7 +96,7 @@ class CodonDict(EqualityCheckProblem):
         assert len(shared_items) == len(correct_dict), ("Your dictionary has {} elements but only {} correct elements. Check the spelling."
                                                         .format(len(codon_dict), len(shared_items)))
         #TODO fix the check for printing. 
-        assert any([are_strings_the_same(correct_string, get_print_output_colab("print('c"), **locals()) for 
+        assert any([are_strings_the_same(correct_string, get_print_output_colab("print('c", **locals())) for 
                     correct_string in correct_strings]), ("`codon_dict` is defined correctly but the final sentence is not correct, perhaps you have a typo?")
 
 
