@@ -34,7 +34,7 @@ def get_print_output_colab(input_,  **kwargs):
       for line in cell['source']:
         if line.lower().startswith(input_):
           print_str = line[6:-1]
-          output = eval(print_str, globals(), locals())
+          output = eval(print_str, kwargs)
           return output
 
 class RNALength(EqualityCheckProblem):
