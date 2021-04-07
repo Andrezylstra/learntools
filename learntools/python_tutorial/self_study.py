@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 def get_last_printed_string(i = -1):
 
     #In is a global variable with inputs.
-    global In
+    #global In
     i = i - 1
     output = In[i]
     for line in reversed(output.split('\n')):
@@ -23,7 +23,19 @@ def are_strings_the_same(string1, string2):
         return True
     else:
         return False
+    
+def get_print_output_colab(input_):
+  from google.colab import _message
+  nb = _message.blocking_request('get_ipynb')
 
+  for cell in nb['ipynb']['cells']:
+    if cell['cell_type'] == 'code':
+      # print('Codon
+      for line in cell['source']:
+        if line.lower().startswith(input_):
+          print_str = line[6:-1]
+          output = eval(print_str)
+          return output
 
 class RNALength(EqualityCheckProblem):
     _vars = ['RNA_length']
@@ -82,7 +94,8 @@ class CodonDict(EqualityCheckProblem):
                                                    .format(len(correct_dict), len(codon_dict)))
         assert len(shared_items) == len(correct_dict), ("Your dictionary has {} elements but only {} correct elements. Check the spelling."
                                                         .format(len(codon_dict), len(shared_items)))
-        assert any([are_strings_the_same(correct_string, get_last_printed_string()) for 
+        #TODO fix the check for printing. 
+        assert any([are_strings_the_same(correct_string, get_print_output_colab("print('c")) for 
                     correct_string in correct_strings]), ("`codon_dict` is defined correctly but the final sentence is not correct, perhaps you have a typo?")
 
 
