@@ -25,7 +25,6 @@ def are_strings_the_same(string1, string2):
         return False
     
 def get_print_output_colab(input_,  **kwargs):
-  print(kwargs)
   from google.colab import _message
   nb = _message.blocking_request('get_ipynb')
   
@@ -35,7 +34,7 @@ def get_print_output_colab(input_,  **kwargs):
       for line in cell['source']:
         if line.lower().startswith(input_):
           print_str = line[6:-1]
-          output = eval(print_str)
+          output = eval(print_str, globals(), locals())
           return output
 
 class RNALength(EqualityCheckProblem):
