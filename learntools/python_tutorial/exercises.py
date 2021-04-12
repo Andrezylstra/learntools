@@ -1,5 +1,6 @@
-from learntools.core import *
 
+
+from learntools.core import *
 
 def get_last_printed_string(i = -1):
     #In is a global variable with inputs.
@@ -19,7 +20,21 @@ def are_strings_the_same(string1, string2):
         return 1
     else:
         return 0
-    
+
+
+def get_print_output_colab(input_,  **kwargs):
+  from google.colab import _message
+  nb = _message.blocking_request('get_ipynb')
+  
+  for cell in nb['ipynb']['cells']:
+    if cell['cell_type'] == 'code':
+      # print('Codon
+      for line in cell['source']:
+        if line.lower().startswith(input_):
+          print_str = line[6:-1]
+          output = eval(print_str, kwargs)
+          return output
+      
 class JanJanssen(EqualityCheckProblem):
     _vars = ['name', 'age']
     _hint = "Define variables `name` and `age` correctly. Then use the function print() in a similar way as in `Welcome to Groningen` example."
@@ -33,8 +48,8 @@ class JanJanssen(EqualityCheckProblem):
                                       .format(correct_name, name))
         assert age == correct_age, ("The variable `age` should contain the integer `{}`. You have `{}`."
                                       .format(correct_age, age))
-        assert are_strings_the_same(correct_string, get_last_printed_string()) == 1, ('Variables `name` and `age` are defined correctly but the final sentence is not correct, perhaps you have a typo?'
-   )
+        assert are_strings_the_same(correct_string,  get_print_output_colab("print('This is",)) == 1, ('Variables `name` and `age` are defined correctly but the final sentence is not correct, perhaps you have a typo?')
+   
     
 class CreateEvenList(EqualityCheckProblem):
     _vars = ['even', 'length_even']
@@ -183,3 +198,4 @@ qvars = bind_exercises(globals(), [
                  'ex_3','ex_4a', 'ex_4b', 'ex_5a', 'ex_6d']
     )
 __all__ = list(qvars)
+     
