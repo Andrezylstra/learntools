@@ -104,7 +104,8 @@ class CodonDict(EqualityCheckProblem):
 class YeastCompetition(EqualityCheckProblem):
     import matplotlib.pyplot as plt
     _vars = ['figure_5a']
-    _hint = "What should be a hint here?"
+    _hint = '''Check the plotting exercise in the tutorial. You should run the function plt.plot() to plot each line
+    and create x and y-labels using plt.xlabel() and plt.ylabel()'''
     _solution = CS('We do not provide the solution here')
 
     def check(self, fig):
