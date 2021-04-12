@@ -30,10 +30,12 @@ def get_print_output_colab(input_,  **kwargs):
   
   for cell in nb['ipynb']['cells']:
     if cell['cell_type'] == 'code':
-      # print('Codon
       for line in cell['source']:
         if line.lower().startswith(input_):
-          print_str = line[6:-1]
+          #selects the string between parentheses in print()
+          print_str = line[line.find("(")+1:line.rfind(")")]
+          #print_str = line[6:-1]
+          print(print_str)
           output = eval(print_str, kwargs)
           return output
 
