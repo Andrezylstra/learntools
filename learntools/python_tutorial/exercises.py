@@ -50,7 +50,7 @@ class JanJanssen(EqualityCheckProblem):
                                       .format(correct_name, name))
         assert age == correct_age, ("The variable `age` should contain the integer `{}`. You have `{}`."
                                       .format(correct_age, age))
-        assert are_strings_the_same(correct_string,  get_print_output_colab("print('this is",)), ('Variables `name` and `age` are defined correctly but the final sentence is not correct, perhaps you have a typo?')
+        assert are_strings_the_same(correct_string,  get_print_output_colab("print('this is", **locals())), ('Variables `name` and `age` are defined correctly but the final sentence is not correct, perhaps you have a typo?')
    
     
 class CreateEvenList(EqualityCheckProblem):
