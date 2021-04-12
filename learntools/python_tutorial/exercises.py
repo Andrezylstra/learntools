@@ -136,10 +136,12 @@ class OperateWithArray(EqualityCheckProblem):
 class MichaelisMenten(FunctionProblem):
     _var = 'Michaelis_Menten'
     #Alex: Douwe, I think we should rename the function to michaelis_menten()
-    _hint = '''Use the same syntaxi for defining functions as described above, 
-    ```def function_name(variables):
-        #function_body
-        return output```'''
+    _hint = '''Use the same syntax for defining functions as described above, 
+    ```python
+    def function_name(variables):
+        #function_body here
+        return output```
+    '''
     _solution = CS("""""")
     def correct_function(S, Vmax, Km):
         v = Vmax * S / (Km + S)
