@@ -74,8 +74,8 @@ class ShoppingPriceLists(EqualityCheckProblem):
     def check(self, shopping_list, price_list):
         correct_shopping_list = ['banana', 'lettuce', 'cake']
         correct_price_list = [0.3, 0.9, 10]
-        assert len(shopping_list) == len(correct_shopping_list), ('You `shopping list` has more that {} values.'.format(len(correct_shopping_list)))
-        assert len(price_list) == len(correct_price_list), ('You `shopping list` has more that {} values.'.format(len(correct_price_list)))
+        assert len(shopping_list) == len(correct_shopping_list), ('Your `shopping_list` has more that {} values.'.format(len(correct_shopping_list)))
+        assert len(price_list) == len(correct_price_list), ('Your `price_list` has more that {} values.'.format(len(correct_price_list)))
         assert shopping_list == correct_shopping_list, ("Your shopping list doesn't contain the correct products")
         assert price_list == correct_price_list, ("Your price list doesn't contain the correct values.")
 
