@@ -137,6 +137,7 @@ class MichaelisMenten(FunctionProblem):
     _var = 'Michaelis_Menten'
     #Alex: Douwe, I think we should rename the function to michaelis_menten()
     _hint = ("Use the same syntax for defining functions as described above, \n"
+    "\n"
     "def function_name(variables):\n"
     "    #function_body here\n"
     "     return output")
