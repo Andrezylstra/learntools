@@ -17,9 +17,9 @@ def are_strings_the_same(string1, string2):
     string2_lower_no_space = string2.replace(' ', '').lower()
     
     if string1_lower_no_space == string2_lower_no_space:
-        return 1
+        return True
     else:
-        return 0
+        return False
 
 
 def get_print_output_colab(input_,  **kwargs):
@@ -48,7 +48,7 @@ class JanJanssen(EqualityCheckProblem):
                                       .format(correct_name, name))
         assert age == correct_age, ("The variable `age` should contain the integer `{}`. You have `{}`."
                                       .format(correct_age, age))
-        assert are_strings_the_same(correct_string,  get_print_output_colab("print('This is",)) == 1, ('Variables `name` and `age` are defined correctly but the final sentence is not correct, perhaps you have a typo?')
+        assert are_strings_the_same(correct_string,  get_print_output_colab("print('This is",)), ('Variables `name` and `age` are defined correctly but the final sentence is not correct, perhaps you have a typo?')
    
     
 class CreateEvenList(EqualityCheckProblem):
