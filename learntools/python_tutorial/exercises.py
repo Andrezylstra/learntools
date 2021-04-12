@@ -1,5 +1,5 @@
-
-
+import numpy as np
+import matplotlib.pyplot as plt
 from learntools.core import *
 
 def get_last_printed_string(i = -1):
