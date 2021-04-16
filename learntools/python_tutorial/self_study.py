@@ -90,7 +90,7 @@ class CodonDict(EqualityCheckProblem):
                         }
       
         shared_items = {k: correct_dict[k] for k in correct_dict if k in codon_dict and correct_dict[k] == codon_dict[k]}
-        correct_strings = ['Codon {} codes the amino acid {}.'.format(codon, aa) for codon, aa in correct_dict.items()]
+        correct_strings = ['Codon {} codes the {} amino acid.'.format(codon, aa) for codon, aa in correct_dict.items()]
         assert len(codon_dict) == len(correct_dict), ("Your dictionary should have {} elements but it has {}"
                                                    .format(len(correct_dict), len(codon_dict)))
         assert len(shared_items) == len(correct_dict), ("Your dictionary has {} elements but only {} correct elements. Check the spelling."
