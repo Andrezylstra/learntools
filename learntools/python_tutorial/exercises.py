@@ -49,7 +49,11 @@ class JanJanssen(EqualityCheckProblem):
                                       .format(correct_name, name))
         assert age == correct_age, ("The variable `age` should contain the integer `{}`. You have `{}`."
                                       .format(correct_age, age))
-        assert are_strings_the_same(correct_string,  get_print_output_colab("print('this is", **locals())), ('Variables `name` and `age` are defined correctly but the final sentence is not correct, perhaps you have a typo?')
+        if get_print_output_colab("print('this is", **locals()) == None:
+            assert are_strings_the_same(correct_string,  get_print_output_colab("print('this is", **locals())), ('Variables `name` and `age` are defined correctly but the final sentence is not correct, perhaps you have a typo?')
+        else:
+            assert are_strings_the_same(correct_string,  get_print_output_colab("print(\"this is", **locals())), ('Variables `name` and `age` are defined correctly but the final sentence is not correct, perhaps you have a typo?')
+
    
     
 class CreateEvenList(EqualityCheckProblem):
@@ -119,7 +123,7 @@ class CreateArray(EqualityCheckProblem):
         correct_array = np.array([4,5,9,11,7])
         assert isinstance(a, np.ndarray), ("You should create a `np.array`, not `{}`").format(type(a),)   
         assert len(a) == len(correct_array), ('Your array `a` should have {} elements.'.format(len(correct_array)))
-        assert (a == correct_array).all(), ('Did you put the numbers in the arrary in the correct order?')
+        assert (a == correct_array).all(), ('Did you put correct numbers in the arrary and in the correct order?')
         
 class OperateWithArray(EqualityCheckProblem):
     import numpy as np
@@ -138,8 +142,8 @@ class MichaelisMenten(FunctionProblem):
     #Alex: Douwe, I think we should rename the function to michaelis_menten()
     _hint = ("Use the same syntax for defining functions as described above, \n"
     "\n"
-    "def function_name(variables):\n"
-    "    #function_body here\n"
+    "def function_name(variables): \n"
+    "    #function_body here \n"
     "     return output")
     _solution = CS("""""")
     def correct_function(S, Vmax, Km):
