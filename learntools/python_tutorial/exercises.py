@@ -50,9 +50,9 @@ class JanJanssen(EqualityCheckProblem):
         assert age == correct_age, ("The variable `age` should contain the integer `{}`. You have `{}`."
                                       .format(correct_age, age))
         if get_print_output_colab("print('this is", **locals()) == None:
-            assert are_strings_the_same(correct_string,  get_print_output_colab("print('this is", **locals())), ('Variables `name` and `age` are defined correctly but the final sentence is not correct, perhaps you have a typo?')
-        else:
             assert are_strings_the_same(correct_string,  get_print_output_colab("print(\"this is", **locals())), ('Variables `name` and `age` are defined correctly but the final sentence is not correct, perhaps you have a typo?')
+        else:
+            assert are_strings_the_same(correct_string,  get_print_output_colab("print('this is", **locals())), ('Variables `name` and `age` are defined correctly but the final sentence is not correct, perhaps you have a typo?')
 
    
     
