@@ -196,10 +196,10 @@ class SubstrateInhibitionPlots(EqualityCheckProblem):
       def correct_function(S, Vmax, Km, Kinh):
         if Kinh == None:
           v = Vmax * S / (Km + S)
-          return round(v,2)
+          return v
         else:
           v = Vmax * S / (Km + S * (1 + S / Kinh))
-          return round(v,2)
+          return v
 
       plot = fig.get_axes()[0]    
       assert len(plot.get_lines()) == 3, "You should have plotted two different lines."
