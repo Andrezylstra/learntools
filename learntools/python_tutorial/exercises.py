@@ -57,7 +57,8 @@ class JanJanssen(EqualityCheckProblem):
    
     
 class CreateEvenList(EqualityCheckProblem):
-    _vars = ['even', 'length_even']
+    _vars = ['even']
+    #_vars = ['even', 'length_even']
     _hint = "To create the list use the function range(start, end, step). To check the legnth use the function len()."
     _solution = CS('We do not provide the solution here')
     #Uncomment this code when the turotial is updated to include length_even
