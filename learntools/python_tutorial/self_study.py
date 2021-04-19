@@ -172,14 +172,14 @@ class SubstrateInhibition(EqualityCheckProblem):
       
       def correct_substrate_inhibition(S, Vmax, Km, Kinh):
           v = Vmax * S / (Km + S * (1 + S / Kinh))
-          return v
+          return round(v,2)
       def correct_mm(S, Vmax, Km):
           v = Vmax * S / (Km + S)
-          return v
-      assert (mm(50, 100, 5) == correct_mm(50, 100, 5)), "Check your `michaelis_menten` function"
-      assert (mm(10, 50, 25) == correct_mm(10, 50, 25)), "Check your `michaelis_menten` function"
-      assert (substrate_inhibiton(1, 10, 0.2,5)== correct_substrate_inhibition(1, 10, 0.2,5)), "Check your `mm_substrate_inhibition` function"
-      assert (substrate_inhibiton(10, 50, 5,5)== correct_substrate_inhibition(10, 50, 5,5)), "Check your `mm_substrate_inhibition` function"
+          return round(v,2)
+      assert (round(mm(50, 100, 5),2) == correct_mm(50, 100, 5)), "Check your `michaelis_menten` function"
+      assert (round(mm(10, 50, 25),2) == correct_mm(10, 50, 25)), "Check your `michaelis_menten` function"
+      assert (round(substrate_inhibiton(1, 10, 0.2,5),2)== correct_substrate_inhibition(1, 10, 0.2,5)), "Check your `mm_substrate_inhibition` function"
+      assert (round(substrate_inhibiton(10, 50, 5,5),2)== correct_substrate_inhibition(10, 50, 5,5)), "Check your `mm_substrate_inhibition` function"
 
 class SubstrateInhibitionPlots(EqualityCheckProblem):
     _var = 'figure_6b'
@@ -196,10 +196,10 @@ class SubstrateInhibitionPlots(EqualityCheckProblem):
       def correct_function(S, Vmax, Km, Kinh):
         if Kinh == None:
           v = Vmax * S / (Km + S)
-          return v
+          return round(v,2)
         else:
           v = Vmax * S / (Km + S * (1 + S / Kinh))
-          return v
+          return round(v,2)
 
       plot = fig.get_axes()[0]    
       assert len(plot.get_lines()) == 3, "You should have plotted two different lines."
@@ -208,7 +208,7 @@ class SubstrateInhibitionPlots(EqualityCheckProblem):
         x = line.get_xdata()
         y = line.get_ydata()
         assert (x[0] == 0) and (x[-1] == 100), ("The first and the last points on the x-axis should be 0 and 100 respectively.")
-        assert any([(y == correct_function(x, Vmax, Km, Kinh)).all() for (Vmax, Km, Kinh) in vmax_km_kinh])
+        assert any([(round(y,2) == correct_function(x, Vmax, Km, Kinh)).all() for (Vmax, Km, Kinh) in vmax_km_kinh])
 
       assert plot.get_xlabel() is not None, "You should add a proper x-label."
       assert plot.get_ylabel() is not None, "You should add a proper y-label."
