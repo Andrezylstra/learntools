@@ -96,9 +96,9 @@ class CodonDict(EqualityCheckProblem):
         assert len(shared_items) == len(correct_dict), ("Your dictionary has {} elements but only {} correct elements. Check the spelling."
                                                         .format(len(codon_dict), len(shared_items)))
         #TODO fix the check for printing. 
-        local_vars = locals()
-        assert any([are_strings_the_same(correct_string, get_print_output_colab("print('c", **local_vars)) for 
-                    correct_string in correct_strings]), ("`codon_dict` is defined correctly but the final sentence is not correct, perhaps you have a typo?")
+        # local_vars = locals()
+        # assert any([are_strings_the_same(correct_string, get_print_output_colab("print('c", **local_vars)) for 
+                    # correct_string in correct_strings]), ("`codon_dict` is defined correctly but the final sentence is not correct, perhaps you have a typo?")
 
 
 class YeastCompetition(EqualityCheckProblem):

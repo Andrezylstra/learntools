@@ -60,16 +60,21 @@ class CreateEvenList(EqualityCheckProblem):
     _vars = ['even', 'length_even']
     _hint = "To create the list use the function range(start, end, step). To check the legnth use the function len()."
     _solution = CS('We do not provide the solution here')
-
-    def check(self, even, length_even):
+    #Uncomment this code when the turotial is updated to include length_even
+    # def check(self, even, length_even):
+        # correct_list = range(20,1001,2)  
+        # assert isinstance(length_even, int), ("The list length should be integer"
+                # " not `{}`").format(type(list_),)
+        # assert len(correct_list) == length_even, ('The length of the list should be {}, you have {}'.
+                                                  # format(len(correct_list), length_even))
+        # assert even[0] == correct_list[0], ('The first element of the list is not correct')
+        # assert all([i%2==0 for i in correct_list]) == True, ('Not each element in the list is an even number')
+    def check(self, even):
         correct_list = range(20,1001,2)  
-        assert isinstance(length_even, int), ("The list length should be integer"
-                " not `{}`").format(type(list_),)
         assert len(correct_list) == length_even, ('The length of the list should be {}, you have {}'.
                                                   format(len(correct_list), length_even))
-        assert even[0] == correct_list[0], ('The first element of the list is not correct')
         assert all([i%2==0 for i in correct_list]) == True, ('Not each element in the list is an even number')
-
+        
 class ShoppingPriceLists(EqualityCheckProblem):
     _vars = ['shopping_list', 'price_list']
     _hint = "Create two lists `shopping_list` and `price_list`. If you forgot how to print the ouput, take a look at the Jan Janssen exercise."
