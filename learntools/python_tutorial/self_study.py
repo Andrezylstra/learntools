@@ -208,7 +208,7 @@ class SubstrateInhibitionPlots(EqualityCheckProblem):
         x = line.get_xdata()
         y = line.get_ydata()
         assert (x[0] == 0) and (x[-1] == 100), ("The first and the last points on the x-axis should be 0 and 100 respectively.")
-        assert any([( abs(y == correct_function(x, Vmax, Km, Kinh))<0.01 ).all() for (Vmax, Km, Kinh) in vmax_km_kinh])
+        assert any([( abs(y - correct_function(x, Vmax, Km, Kinh))<0.01 ).all() for (Vmax, Km, Kinh) in vmax_km_kinh])
 
       assert plot.get_xlabel() is not None, "You should add a proper x-label."
       assert plot.get_ylabel() is not None, "You should add a proper y-label."
