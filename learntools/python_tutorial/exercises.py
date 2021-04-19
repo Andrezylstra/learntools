@@ -72,8 +72,8 @@ class CreateEvenList(EqualityCheckProblem):
         # assert all([i%2==0 for i in correct_list]) == True, ('Not each element in the list is an even number')
     def check(self, even):
         correct_list = range(20,1001,2)  
-        assert len(correct_list) == length_even, ('The length of the list should be {}, you have {}'.
-                                                  format(len(correct_list), length_even))
+        assert len(correct_list) == len(even), ('The length of the list should be {}, you have {}'.
+                                                  format(len(correct_list), len(even)))
         assert all([i%2==0 for i in correct_list]) == True, ('Not each element in the list is an even number')
         
 class ShoppingPriceLists(EqualityCheckProblem):
