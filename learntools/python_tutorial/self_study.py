@@ -52,6 +52,7 @@ class ArrayOperations(EqualityCheckProblem):
 
     def check(self, x_array, y_array, fig):
         import matplotlib
+        import matplotlib.pyplot as plt
         
         correct_x = np.array(range(0,31,1))
         correct_y = (correct_x*3)**2
