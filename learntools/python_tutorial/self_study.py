@@ -51,6 +51,8 @@ class ArrayOperations(EqualityCheckProblem):
     _solution = CS('We do not provide the solution here')
 
     def check(self, x_array, y_array, fig):
+        import matplotlib
+        
         correct_x = np.array(range(0,31,1))
         correct_y = (correct_x*3)**2
         assert isinstance(x_array, np.ndarray) and isinstance(y_array, np.ndarray), (
@@ -104,6 +106,7 @@ class CodonDict(EqualityCheckProblem):
 
 class YeastCompetition(EqualityCheckProblem):
     import matplotlib.pyplot as plt
+    import matplotlib
     _vars = ['figure_5a']
     _hint = '''Check the plotting exercise in the tutorial. You should run the function plt.plot() to plot each line
     and create x and y-labels using plt.xlabel() and plt.ylabel()'''
@@ -135,6 +138,7 @@ class YeastCompetition(EqualityCheckProblem):
 
 class YeastCompetition2(EqualityCheckProblem):
     import matplotlib.pyplot as plt
+    import matplotlib
     _vars = ['figure_5b']
     _hint = "To add element to a list use the .append() function."
     _solution = CS('''
@@ -195,6 +199,7 @@ class SubstrateInhibitionPlots(EqualityCheckProblem):
     """)
 
     def check(self, fig):
+      import matplotlib
       vmax_km_kinh = [(50, 25, None),(50, 25, 10),(50, 25, 75)]
       def correct_function(S, Vmax, Km, Kinh):
         if Kinh == None:
