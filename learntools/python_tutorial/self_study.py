@@ -114,6 +114,8 @@ class YeastCompetition(EqualityCheckProblem):
     _solution = CS('We do not provide the solution here')
 
     def check(self, fig):
+      import matplotlib.pyplot as plt
+      import matplotlib
       time = [0, 12, 24, 36, 48, 60, 72, 84, 96]
       co2_strain1 = [0, 0.8, 2.5, 3.8, 4.5, 4.9, 5.0, 5.2, 5.3]
       co2_strain2 = [0, 0.1, 0.3, 0.6, 1.0, 1.4, 1.8, 2.2, 2.6]
@@ -147,6 +149,8 @@ class YeastCompetition2(EqualityCheckProblem):
     since the amount of CO2 couldn't decrease biologically in this experiment.''')
 
     def check(self, fig):
+      import matplotlib.pyplot as plt
+      import matplotlib
       time = [0, 12, 24, 36, 48, 60, 72, 84, 96, 108]
       co2_strain1 = [0, 0.8, 2.5, 3.8, 4.5, 4.9, 5.0, 5.2, 5.3, 4.0]
       co2_strain2 = [0, 0.1, 0.3, 0.6, 1.0, 1.4, 1.8, 2.2, 2.6, 0.3]
