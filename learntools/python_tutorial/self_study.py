@@ -61,7 +61,7 @@ class ArrayOperations(EqualityCheckProblem):
         )
         assert (x_array == correct_x).all(), ("Your `x_array` is not correct. Reminder: it should contain all integers between 0 and 30, including 0 and 30.") 
         assert (y_array == correct_y).all(), ("Your `y_array` is not correct. Check if you have performed all calculations correctly.")
-        assert isinstance(fig, matplotlib.figure.Figure), ("Check if your line for storing the plot in a vairable is correct, you now have variable {} and not a matplotlib figure".format(type(fig)))
+        assert isinstance(fig, type(plt.figure())), ("Check if your line for storing the plot in a vairable is correct, you now have variable {} and not a matplotlib figure".format(type(fig)))
 
         plot = fig.get_axes()[0]    
         assert len(plot.get_lines()) == 1, "You should have plotted only one line"       
@@ -120,7 +120,7 @@ class YeastCompetition(EqualityCheckProblem):
       co2_strain1 = [0, 0.8, 2.5, 3.8, 4.5, 4.9, 5.0, 5.2, 5.3]
       co2_strain2 = [0, 0.1, 0.3, 0.6, 1.0, 1.4, 1.8, 2.2, 2.6]
       
-      assert isinstance(fig, matplotlib.figure.Figure), ("Check if your line for storing the plot in a vairable is correct, you now have variable {} and not a matplotlib figure".format(type(fig)))
+      assert isinstance(fig, type(plt.figure())), ("Check if your line for storing the plot in a vairable is correct, you now have variable {} and not a matplotlib figure".format(type(fig)))
       plot = fig.get_axes()[0]    
       assert len(plot.get_lines()) == 2, "You should have plotted two different lines."
            
@@ -141,7 +141,6 @@ class YeastCompetition(EqualityCheckProblem):
 
 class YeastCompetition2(EqualityCheckProblem):
     import matplotlib.pyplot as plt
-    import matplotlib
     _vars = ['figure_5b']
     _hint = "To add element to a list use the .append() function."
     _solution = CS('''
@@ -150,11 +149,10 @@ class YeastCompetition2(EqualityCheckProblem):
 
     def check(self, fig):
       import matplotlib.pyplot as plt
-      import matplotlib
       time = [0, 12, 24, 36, 48, 60, 72, 84, 96, 108]
       co2_strain1 = [0, 0.8, 2.5, 3.8, 4.5, 4.9, 5.0, 5.2, 5.3, 4.0]
       co2_strain2 = [0, 0.1, 0.3, 0.6, 1.0, 1.4, 1.8, 2.2, 2.6, 0.3]
-      assert isinstance(fig, matplotlib.figure.Figure), ("Check if your line for storing the plot in a vairable is correct, you now have variable {} and not a matplotlib figure".format(type(fig)))
+      assert isinstance(fig, type(plt.figure())), ("Check if your line for storing the plot in a vairable is correct, you now have variable {} and not a matplotlib figure".format(type(fig)))
         
       plot = fig.get_axes()[0]    
       assert len(plot.get_lines()) == 2, "You should have plotted two different lines."
@@ -194,6 +192,8 @@ class SubstrateInhibition(EqualityCheckProblem):
       assert (round(substrate_inhibiton(10, 50, 5,5),2)== correct_substrate_inhibition(10, 50, 5,5)), "Check your `mm_substrate_inhibition` function"
 
 class SubstrateInhibitionPlots(EqualityCheckProblem):
+    import matplotlib.pyplot as plt
+
     _var = 'figure_6b'
     _hint = '''Use a numpy array (np.array) to define the substrate range. If you get stuck with plotting check how it was done in the tutorial.'''
     _solution = CS("""
@@ -204,7 +204,6 @@ class SubstrateInhibitionPlots(EqualityCheckProblem):
     """)
 
     def check(self, fig):
-      import matplotlib
       vmax_km_kinh = [(50, 25, None),(50, 25, 10),(50, 25, 75)]
       def correct_function(S, Vmax, Km, Kinh):
         if Kinh == None:
@@ -214,7 +213,7 @@ class SubstrateInhibitionPlots(EqualityCheckProblem):
           v = Vmax * S / (Km + S * (1 + S / Kinh))
           return v
           
-      assert isinstance(fig, matplotlib.figure.Figure), ("Check if your line for storing the plot in a vairable is correct, you now have variable {} and not a matplotlib figure".format(type(fig)))
+      assert isinstance(fig, type(plt.figure())), ("Check if your line for storing the plot in a vairable is correct, you now have variable {} and not a matplotlib figure".format(type(fig)))
       plot = fig.get_axes()[0]    
       assert len(plot.get_lines()) == 3, "You should have plotted two different lines."
            
