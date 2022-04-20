@@ -118,80 +118,80 @@ class EnzymesDict(EqualityCheckProblem):
                                                    .format(len(correct_dict), len(enzymes)))
         assert len(shared_items) == len(correct_dict), ("Your dictionary has {} elements but only {} correct elements. Check the spelling."
                                                         .format(len(enzymes), len(shared_items)))
-        
-class CreateArray(EqualityCheckProblem):
-    import numpy as np
-    _vars = ['a']
-    _hint = "See the rules above on how to create an array."
-    _solution = CS('We do not provide the solution here')
+# Removed after shortening of the notebook for 2022 classes
+# class CreateArray(EqualityCheckProblem):
+#     import numpy as np
+#     _vars = ['a']
+#     _hint = "See the rules above on how to create an array."
+#     _solution = CS('We do not provide the solution here')
 
-    def check(self, a):
-        correct_array = np.array([4,5,9,11,7])
-        assert isinstance(a, np.ndarray), ("You should create a `np.array`, not `{}`").format(type(a),)   
-        assert len(a) == len(correct_array), ('Your array `a` should have {} elements.'.format(len(correct_array)))
-        assert (a == correct_array).all(), ('Did you put correct numbers in the arrary and in the correct order?')
+#     def check(self, a):
+#         correct_array = np.array([4,5,9,11,7])
+#         assert isinstance(a, np.ndarray), ("You should create a `np.array`, not `{}`").format(type(a),)   
+#         assert len(a) == len(correct_array), ('Your array `a` should have {} elements.'.format(len(correct_array)))
+#         assert (a == correct_array).all(), ('Did you put correct numbers in the arrary and in the correct order?')
         
-class OperateWithArray(EqualityCheckProblem):
-    import numpy as np
-    _vars = ['a_mult', 'a_div', 'a_power']
-    _hint = "See the rules above on how to create an array."
-    _solution = CS('We do not provide the solution here')
+# class OperateWithArray(EqualityCheckProblem):
+#     import numpy as np
+#     _vars = ['a_mult', 'a_div', 'a_power']
+#     _hint = "See the rules above on how to create an array."
+#     _solution = CS('We do not provide the solution here')
 
-    def check(self, a_mult, a_div, a_power):
-        correct_array = np.array([4,5,9,11,7])
-        assert (a_mult == correct_array*2).all(), ("You didn't mulptiply the array correctly")   
-        assert (a_div == correct_array/6).all(), ("You didn't divide the array correctly")   
-        assert (a_power == correct_array**2).all(), ("You didn't exponentiated the array correctly")   
+#     def check(self, a_mult, a_div, a_power):
+#         correct_array = np.array([4,5,9,11,7])
+#         assert (a_mult == correct_array*2).all(), ("You didn't mulptiply the array correctly")   
+#         assert (a_div == correct_array/6).all(), ("You didn't divide the array correctly")   
+#         assert (a_power == correct_array**2).all(), ("You didn't exponentiated the array correctly")   
         
-class MichaelisMenten(FunctionProblem):
-    _var = 'Michaelis_Menten'
-    #Alex: Douwe, I think we should rename the function to michaelis_menten()
-    _hint = ("Use the same syntax for defining functions as described above, \n"
-    "\n"
-    "def function_name(variables): \n"
-    "    #function_body here \n"
-    "     return output")
-    _solution = CS("""""")
-    def correct_function(S, Vmax, Km):
-        v = Vmax * S / (Km + S)
-        return v
-    _test_cases = [
-        ((10, 50, 25), correct_function(10, 50, 25)),
-        ((50, 100, 5), correct_function(50, 100, 5)),
-        ((1, 10, 0.2), correct_function(1, 10, 0.2))
-        ]
+# class MichaelisMenten(FunctionProblem):
+#     _var = 'Michaelis_Menten'
+#     #Alex: Douwe, I think we should rename the function to michaelis_menten()
+#     _hint = ("Use the same syntax for defining functions as described above, \n"
+#     "\n"
+#     "def function_name(variables): \n"
+#     "    #function_body here \n"
+#     "     return output")
+#     _solution = CS("""""")
+#     def correct_function(S, Vmax, Km):
+#         v = Vmax * S / (Km + S)
+#         return v
+#     _test_cases = [
+#         ((10, 50, 25), correct_function(10, 50, 25)),
+#         ((50, 100, 5), correct_function(50, 100, 5)),
+#         ((1, 10, 0.2), correct_function(1, 10, 0.2))
+#         ]
     
-class PlotThreeLines(EqualityCheckProblem):
-    import matplotlib.pyplot as plt
+# class PlotThreeLines(EqualityCheckProblem):
+#     import matplotlib.pyplot as plt
     
-    _vars = ['figure_6d']
-    _hint = "See the rules above on how to create an array."
-    _solution = CS('We do not provide the solution here')
+#     _vars = ['figure_6d']
+#     _hint = "See the rules above on how to create an array."
+#     _solution = CS('We do not provide the solution here')
 
-    def check(self, fig):
-         vmax_km = [(50,25),(50,5),(50,50)]
-         def michaelis_menten(S, Vmax, Km):
-            v = Vmax * S / (Km + S)
-            return v
-         plot = fig.get_axes()[0]
-         colors = set([line.get_color() for line in plot.get_lines()])
-         assert len(colors) == 3, "You should use three different colors for the plot."
+#     def check(self, fig):
+#          vmax_km = [(50,25),(50,5),(50,50)]
+#          def michaelis_menten(S, Vmax, Km):
+#             v = Vmax * S / (Km + S)
+#             return v
+#          plot = fig.get_axes()[0]
+#          colors = set([line.get_color() for line in plot.get_lines()])
+#          assert len(colors) == 3, "You should use three different colors for the plot."
          
-         assert len(plot.get_lines()) == 3, "You should have plotted three different lines."
+#          assert len(plot.get_lines()) == 3, "You should have plotted three different lines."
          
-         linewidths = [line.get_linewidth() for line in plot.get_lines()]
-         assert linewidths == [5, 5, 5], "All lines should have linewidth = 5"
+#          linewidths = [line.get_linewidth() for line in plot.get_lines()]
+#          assert linewidths == [5, 5, 5], "All lines should have linewidth = 5"
          
-         linestyles = [line.get_ls() for line in plot.get_lines()]
-         assert linestyles == ['-', '-', '-'], "All lines should have solid linestyle ('-')."
+#          linestyles = [line.get_ls() for line in plot.get_lines()]
+#          assert linestyles == ['-', '-', '-'], "All lines should have solid linestyle ('-')."
 
-         for line in plot.get_lines():
-           S = line.get_xdata()
-           v = line.get_ydata()
-           assert any([(v == michaelis_menten(S, Vmax, Km)).all() for (Vmax, Km) in vmax_km]), (
-               '''You should have plotted three different lines with Km = 5, 25, 50 mM and Vmax = 50 mM/s.
-               At least one of the lines is missing.'''
-           )
+#          for line in plot.get_lines():
+#            S = line.get_xdata()
+#            v = line.get_ydata()
+#            assert any([(v == michaelis_menten(S, Vmax, Km)).all() for (Vmax, Km) in vmax_km]), (
+#                '''You should have plotted three different lines with Km = 5, 25, 50 mM and Vmax = 50 mM/s.
+#                At least one of the lines is missing.'''
+#            )
 
 
 qvars = bind_exercises(globals(), [
@@ -200,14 +200,13 @@ qvars = bind_exercises(globals(), [
     ShoppingPriceLists,
     AppendElementToList,
     EnzymesDict,
-    CreateArray,
-    OperateWithArray,
-    MichaelisMenten,
-    PlotThreeLines
+#     CreateArray,
+#     OperateWithArray,
+#     MichaelisMenten,
+#     PlotThreeLines
     ],
     var_format='ex_{n}',
-    var_names = ['ex_1a', 'ex_2a', 'ex_2b', 'ex_2c',
-                 'ex_3','ex_4a', 'ex_4b', 'ex_5a', 'ex_6d']
+    var_names = ['ex_1a', 'ex_2a', 'ex_2b', 'ex_2c', 'ex_3']
     )
 __all__ = list(qvars)
      
